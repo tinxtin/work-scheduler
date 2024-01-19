@@ -22,6 +22,10 @@ header {
   padding: 60px;
 }
 
+li {
+  list-style: none;
+}
+
 .description {
   white-space: pre-wrap;
 }
