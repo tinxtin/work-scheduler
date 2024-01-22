@@ -4,13 +4,11 @@ $(document).ready(() => {
     colorTimeBlock(time);
 
     $('.description').on('click', function() {
-        var $descEl = $(this);
-        isEditable = $descEl.is('.editable');
-        $descEl.prop('contentEditable',!isEditable).toggleClass('editable')
-        if (!$descEl.is(':focus')) {$(this).focus();}
-        $descEl.on('focusout', function() {
-            console.log('test')
-        });
+        editBlock($(this));
+        if (!$(this).is(':focus')) {$(this).focus();}
+    })
+    $('.description').on('focusout', function() {
+        editBlock($(this));
     })
 })
 
@@ -29,4 +27,9 @@ function colorTimeBlock(currTime) {
         : $blockTime > currTime ? $(this).css('background-color', 'green')
         : $(this).css('background-color', 'red');
     })
+}
+
+function editBlock($descEl) {
+    isEditable = $descEl.is('.editable');
+    $descEl.prop('contentEditable',!isEditable).toggleClass('editable')
 }
