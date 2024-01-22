@@ -17,7 +17,7 @@ This application is a work schedule for the current day. It has the standard off
 * Persist events between refreshes of a page
 
 ## Screenshots
-![](./screenshots/ws1.png "front image of app")\
+![](./screenshots/ws1.png "front image of app")
 
 ## Deployed URL
-URL: 
+URL: https://tinxtin.github.io/work-scheduler/ 
