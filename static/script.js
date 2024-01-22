@@ -1,7 +1,10 @@
 
 $(document).ready(() => {
     var time = currTime();
-    colorTimeBlock(time);
+    colorBlock(time);
+    setInterval(function() {
+        colorBlock(time);
+    },60000)
 
     $('.description').on('click', function() {
         editBlock($(this));
@@ -9,6 +12,11 @@ $(document).ready(() => {
     })
     $('.description').on('focusout', function() {
         editBlock($(this));
+    })
+    $('.saveBtn').on('click', function() {
+        var $descText = $(this).siblings('.description').text();
+        var $descTime = $(this).siblings('.description').attr('data-time');
+        localStorage.setItem($descTime, $descText)
     })
 })
 
@@ -20,7 +28,7 @@ function currTime() {
     return parseInt(dayjs().format('H'));
 }
 
-function colorTimeBlock(currTime) {
+function colorBlock(currTime) {
     $('.description').each(function() {
         var $blockTime = ($(this).attr('data-time'));
         $blockTime < currTime ? $(this).css('background-color', 'grey') 
@@ -32,4 +40,8 @@ function colorTimeBlock(currTime) {
 function editBlock($descEl) {
     isEditable = $descEl.is('.editable');
     $descEl.prop('contentEditable',!isEditable).toggleClass('editable')
+}
+
+function saveBlock() {
+
 }
