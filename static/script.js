@@ -24,7 +24,7 @@ $(document).ready(() => {
 function currTime() {
     var $dateEl = $('#currentDay');
     var $createTimeEl = $('<div>');
-    var currDate = dayjs().format('[Current day: ]dddd[,] MMMM d[th]');
+    var currDate = dayjs().format('[Current day: ]dddd[,] MMMM D[th]');
     $dateEl.append($createTimeEl.text(currDate));
     return parseInt(dayjs().format('H'));
 }
@@ -32,9 +32,9 @@ function currTime() {
 function colorBlock(currTime) {
     $('.description').each(function() {
         var $blockTime = ($(this).attr('data-time'));
-        $blockTime < currTime ? $(this).css('background-color', 'grey') 
-        : $blockTime > currTime ? $(this).css('background-color', 'green')
-        : $(this).css('background-color', 'red');
+        $blockTime < currTime ? $(this).css('background-color', 'rgb(188, 184, 177)') 
+        : $blockTime > currTime ? $(this).css('background-color', 'rgb(82, 183, 136)')
+        : $(this).css('background-color', 'rgb(240, 128, 128)');
     })
 }
 
