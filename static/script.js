@@ -1,5 +1,6 @@
 
 $(document).ready(() => {
+    loadBlock();
     var time = currTime();
     colorBlock(time);
     setInterval(function() {
@@ -14,8 +15,8 @@ $(document).ready(() => {
         editBlock($(this));
     })
     $('.saveBtn').on('click', function() {
-        var $descText = $(this).siblings('.description').text();
         var $descTime = $(this).siblings('.description').attr('data-time');
+        var $descText = $(this).siblings('.description').text();
         localStorage.setItem($descTime, $descText)
     })
 })
@@ -42,6 +43,8 @@ function editBlock($descEl) {
     $descEl.prop('contentEditable',!isEditable).toggleClass('editable')
 }
 
-function saveBlock() {
-
+function loadBlock() {
+    $('.description').each(function() {
+        $(this).text(localStorage.getItem($(this).attr('data-time')))
+    })
 }
